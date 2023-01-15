@@ -44,5 +44,7 @@ database.sync(ENV.DB_ALTER).then(() => {
     console.log(`Server started on port ${port}`)
 );
 }).catch(error => {
+    //read following article and implement this.
+    //https://kentcdodds.com/blog/get-a-catch-block-error-message-with-typescript
       console.log("I am in error part",error)
 })

@@ -1,5 +1,5 @@
 import { Op,Sequelize } from 'sequelize';
-
+import {Request, Response, NextFunction} from 'express';
 import bookModel from '../models/bookModel';
 import userModel from '../models/userModel';
 import orderModel from '../models/orderModel';
@@ -9,7 +9,7 @@ import {CONSTANTS} from '../constants/constants';
 import {CATCH_MESSAGES} from '../constants/catchMessages';
 
 //upload book
-const uploadBook = async (req, res, next) => {
+const uploadBook = async (req:Request, res:Response, next:NextFunction) => {
     try {
         const sellerId = req.body.id; 
         const bookTitle = req.body.bookTitle;
@@ -48,7 +48,7 @@ const uploadBook = async (req, res, next) => {
 }
 
 //list books of seller
-const listSellerBooks = async (req,res,next) =>{
+const listSellerBooks = async (req:Request,res:Response,next:NextFunction) =>{
     try {
         const sellerId = req.body.id; 
         let allBooks = await bookModel.findAll({
@@ -87,7 +87,7 @@ const listSellerBooks = async (req,res,next) =>{
 }
 
 //list all books of store
-const listAllBooks = async (req,res,next) =>{
+const listAllBooks = async (req:Request,res:Response,next:NextFunction) =>{
     try {
         userModel.hasMany(bookModel, {foreignKey: 'sellerId'})
         bookModel.belongsTo(userModel, {foreignKey: 'id'})
@@ -129,7 +129,7 @@ const listAllBooks = async (req,res,next) =>{
 }
 
 //create order
-const createOrder = async (req,res,next) =>{
+const createOrder = async (req:Request,res:Response,next:NextFunction) =>{
     try{
         const customerId = req.body.id;
         const orderDetails = req.body.orderDetails;
@@ -179,7 +179,7 @@ const createOrder = async (req,res,next) =>{
             customerId: customerId
         };
 
-        order = await orderModel.create(orderObj);
+        let order = await orderModel.create(orderObj);
        
         //insert details in orderItem table...
         let insertArr = [];
@@ -233,7 +233,7 @@ const createOrder = async (req,res,next) =>{
     }
 }
 
-const deleteOrder = async (req,res,next) => {
+const deleteOrder = async (req:Request,res:Response,next:NextFunction) => {
     try {
         const customerId = req.body.id;
         const orderId = req.body.orderId;

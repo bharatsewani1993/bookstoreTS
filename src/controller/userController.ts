@@ -1,4 +1,5 @@
 import {Sequelize} from 'sequelize';
+import {Request, Response, NextFunction} from 'express';
 import bcrypt from 'bcryptjs';
 import {CONSTANTS} from "../constants/constants";
 import {CATCH_MESSAGES} from '../constants/catchMessages';
@@ -12,7 +13,7 @@ import orderItemsModel from '../models/orderItemsModel';
 import {createAuthentication} from '../middlewares/auth';
 
 //Common signup for seller and customer
-const signUp = async (req, res, next) => {
+const signUp = async (req:Request, res:Response, next:NextFunction) => {
     try {
       const firstName = req.body.firstName;    
       const lastName = req.body.lastName;        
@@ -71,7 +72,7 @@ const signUp = async (req, res, next) => {
   };
   
   //common sign-in for seller and customer
-const signIn = async (req, res, next) => {
+const signIn = async (req:Request, res:Response, next:NextFunction) => {
       try {
           const email = req.body.email;
           const password = req.body.password;
@@ -113,7 +114,7 @@ const signIn = async (req, res, next) => {
       }
 }
 
-const getOrders = async (req,res,next) => {
+const getOrders = async (req:Request,res:Response,next:NextFunction) => {
   try {
       const customerId = req.body.id;
 
