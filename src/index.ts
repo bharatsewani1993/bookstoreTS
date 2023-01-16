@@ -43,8 +43,8 @@ database.sync(ENV.DB_ALTER).then(() => {
     app.listen(port, () =>
     console.log(`Server started on port ${port}`)
 );
-}).catch(error => {
+}).catch((error:unknown) => {
     //read following article and implement this.
-    //https://kentcdodds.com/blog/get-a-catch-block-error-message-with-typescript
+    //https://stackoverflow.com/questions/54649465/how-to-do-try-catch-and-finally-statements-in-typescript
       console.log("I am in error part",error)
 })

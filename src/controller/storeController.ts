@@ -38,7 +38,7 @@ const uploadBook = async (req:Request, res:Response, next:NextFunction) => {
             message:CONSTANTS.MESSAGES.BOOK_UPLOADED,
             data:results
         });
-    } catch(err){
+    } catch(err:unknown){
         console.log(CATCH_MESSAGES.BOOK_UPLOAD, err);
         res.status(400).send({
             success:false,
@@ -77,7 +77,7 @@ const listSellerBooks = async (req:Request,res:Response,next:NextFunction) =>{
             remainingQty:remainingQty
         });
 
-    } catch(err) {
+    } catch(err:unknown) {
         console.log(CATCH_MESSAGES.LIST_SELLER_BOOKS, err);
         res.status(400).send({
             success:false,
@@ -119,7 +119,7 @@ const listAllBooks = async (req:Request,res:Response,next:NextFunction) =>{
             data: allBooks,
             message: CONSTANTS.MESSAGES.BOOKS_LISTED
         });
-    } catch(err){
+    } catch(err:unknown){
         console.log(CATCH_MESSAGES.LIST_ALL_BOOKS, err);
         res.status(400).send({
             success:false,
@@ -224,7 +224,7 @@ const createOrder = async (req:Request,res:Response,next:NextFunction) =>{
             message: CONSTANTS.MESSAGES.ORDER_CREATED
         });
 
-    } catch (err){
+    } catch (err:unknown){
         console.log(CATCH_MESSAGES.CREATE_ORDER, err);
         res.status(400).send({
             success:false,
@@ -335,7 +335,7 @@ const deleteOrder = async (req:Request,res:Response,next:NextFunction) => {
             message: CONSTANTS.MESSAGES.ORDER_DELETED
         });
 
-    } catch(err) {
+    } catch(err:unknown) {
         console.log(CATCH_MESSAGES.DELETE_ORDER, err);
         res.status(400).send({
             success:false,

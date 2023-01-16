@@ -62,7 +62,7 @@ const signUp = async (req:Request, res:Response, next:NextFunction) => {
           message: CONSTANTS.MESSAGES.EMAIL_ALREADY_REGISTERED,
         });
       }
-    } catch (err) {
+    } catch (err:unknown) {
       console.log(err);
       res.status(401).send({
         success: false,
@@ -105,7 +105,7 @@ const signIn = async (req:Request, res:Response, next:NextFunction) => {
             const error = new Error(CONSTANTS.MESSAGES.INVALID_CREDENTIALS);
             throw error;
           } 
-      } catch (error) {
+      } catch (error:unknown) {
           console.log(error);
           res.status(400).send({
               success: false,
@@ -141,7 +141,7 @@ const getOrders = async (req:Request,res:Response,next:NextFunction) => {
         message:CONSTANTS.MESSAGES.ORDER_LISTED,
       });     
      
-  } catch (error) {
+  } catch (error:unknown) {
       console.log(CATCH_MESSAGES.GET_ORDERS, error);
       res.status(400).send({
           success: false,

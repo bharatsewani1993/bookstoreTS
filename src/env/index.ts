@@ -1,7 +1,7 @@
-import local from './local';
-import development from './development';
-import production from './production';
-import stage from './stage';
+import {configurations as local} from './local';
+import {configurations as development} from './development';
+import {configurations as production}  from './production';
+import {configurations as stage} from './stage';
 
 export const envSettings = () => {
     switch (process.env.APP_ENV) {
